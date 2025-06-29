@@ -23,7 +23,7 @@
 </template>
 
 <script setup>
-import { ref,onMounted } from 'vue'
+import { ref,watch } from 'vue'
 
 const props = defineProps({
   canAdd: Boolean
@@ -37,12 +37,19 @@ const priority = ref('moyenne')
 const tags = ref('')
 
 // fonction permettant d'afficher la date et heure actuelle sans avoir besoin d'interaction humaine
-onMounted(() => {
-  const now = new Date()
-  const offset = now.getTimezoneOffset()
-  const localDate = new Date(now.getTime() - offset * 60000) 
-  date.value = localDate.toISOString().slice(0, 16) 
-})
+watch(
+  () => props.canAdd,
+  (newVal) => {
+    if (newVal) {
+      console.log('date initialisée', date.value)
+      const now = new Date()
+      const offset = now.getTimezoneOffset()
+      const localDate = new Date(now.getTime() - offset * 60000)
+      date.value = localDate.toISOString().slice(0, 16)
+    }
+  },
+  { immediate: true }
+)
 
 const handleAddTask = () => {
   if (!title.value.trim() || !date.value || !priority.value.trim()) {
