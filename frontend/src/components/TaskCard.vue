@@ -15,7 +15,9 @@
       <button @click="$emit('toggle-task', task)" class="action-button">
         {{ task.completed ? 'Annuler' : 'Valider' }}
       </button>
+      <button v-if="!task.completed " @click="$emit('edit-task', task)" class="action-button">Modifier</button>
       <button @click="$emit('delete-task', task)" class="delete-button">Supprimer</button>
+      
     </div>
   </div>
 </template>
@@ -25,7 +27,7 @@ const props = defineProps({
   task: Object
 })
 
-const emit = defineEmits(['toggle-task', 'delete-task'])
+const emit = defineEmits(['toggle-task', 'delete-task','edit-task'])
 
 const getPriorityClass = (priority) => {
   switch (priority) {

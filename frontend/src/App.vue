@@ -17,7 +17,12 @@
     />
 
     <!-- Formulaire nouvelle tâche -->
-    <TaskForm :canAdd="currentList !== null"  @add-task="addTask" />
+    <TaskForm
+      :canAdd="currentList !== null"
+      :taskToEdit="taskBeingEdited"
+      @add-task="addTask"
+      @update-task="updateTask"
+    />
 
     <!-- Sélecteur tri -->
     <TaskTri :sortCriteria="sortCriteria" @update:sortCriteria="val => sortCriteria = val" />
@@ -34,6 +39,7 @@
           :task="task"
           @toggle-task="toggleTask"
           @delete-task="deleteTask"
+          @edit-task="startEditTask"
         />
       </div>
 
@@ -46,6 +52,7 @@
           :task="task"
           @toggle-task="toggleTask"
           @delete-task="deleteTask"
+          
         />
       </div>
     </div>
@@ -210,6 +217,31 @@ const deleteTask = async(task) => {
   }
 }
 
+
+const taskBeingEdited = ref(null)
+
+const startEditTask = (task) => {
+  taskBeingEdited.value = { ...task } // On clone pour ne pas modifier directement
+}
+
+
+const updateTask =async(updatedTask) =>{
+  try {
+    await axios.patch(`http://localhost:3000/tasks/${updatedTask.id}`, {
+      ...updatedTask
+    })
+
+    const tasks = lists.value[currentList.value].tasks
+    const index = tasks.findIndex(t => t.id === updatedTask.id)
+    if (index !== -1) {
+      tasks[index] = updatedTask
+    }
+
+    taskBeingEdited.value = null
+  } catch (err) {
+    console.error('Erreur lors de la mise à jour', err)
+  }
+}
 /**
  * Trie un tableau de tâches selon le critère sélectionné.
  * Par défaut trie par priorité (ordre décroissant).
