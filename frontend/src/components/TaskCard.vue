@@ -2,7 +2,7 @@
   <div :class="task.completed ? 'task-card-done' : 'task-card'">
     <div>
       <h2 :class="['task-title', task.completed ? 'completed' : '']">{{ task.title }}</h2>
-      <p class="task-info">Échéance : {{ task.date }}</p>
+      <p class="task-info">Échéance : {{ formatDateTime(task.date) }}</p>
       <p class="task-info">
         Priorité :
         <span :class="getPriorityClass(task.priority)">{{ task.priority }}</span>
@@ -38,5 +38,13 @@ const getPriorityClass = (priority) => {
     default:
       return ''
   }
+}
+
+const formatDateTime = (isoDate) => {
+  if (!isoDate) return ''
+  const date = new Date(isoDate)
+  return date.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' }) 
+    + ' à ' 
+    + date.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' })
 }
 </script>

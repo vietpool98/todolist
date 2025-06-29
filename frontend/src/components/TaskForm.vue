@@ -1,7 +1,7 @@
 <template>
   <div class="form-card">
     <input v-model="title" placeholder="Titre de la tâche" class="form-input" />
-    <input v-model="date" type="date" class="form-input" />
+    <input v-model="date" type="datetime-local" class="form-input" />
     <select v-model="priority" class="form-input">
       <option value="basse">Basse</option>
       <option value="moyenne">Moyenne</option>
@@ -23,7 +23,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref,onMounted } from 'vue'
 
 const props = defineProps({
   canAdd: Boolean
@@ -35,6 +35,14 @@ const title = ref('')
 const date = ref('')
 const priority = ref('moyenne')
 const tags = ref('')
+
+// fonction permettant d'afficher la date et heure actuelle sans avoir besoin d'interaction humaine
+onMounted(() => {
+  const now = new Date()
+  const offset = now.getTimezoneOffset()
+  const localDate = new Date(now.getTime() - offset * 60000) 
+  date.value = localDate.toISOString().slice(0, 16) 
+})
 
 const handleAddTask = () => {
   if (!title.value.trim() || !date.value || !priority.value.trim()) {
