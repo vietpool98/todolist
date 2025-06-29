@@ -18,6 +18,19 @@ Une application web simple de gestion de tâches (To-Do List) développée avec 
 - MySQL installé et configuré
 - Git
 
+### Configuration manuelle de la base MySQL
+
+1. Ouvre MySQL dans ton terminal :
+```bash
+mysql -u root -p
+
+### Installation du backend
+
+```bash
+cd backend
+npm install
+npm run start
+
 ### Installation du backend
 
 ```bash
