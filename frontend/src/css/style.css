@@ -1,0 +1,266 @@
+
+
+
+.app-container {
+  background-color: #161515;
+  color: white;
+  min-height: 100vh;
+  padding: 2rem;
+  
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.title {
+  background: #cfc24d;
+  text-align: center;
+  display: flex;
+  align-items: center;       
+  justify-content: center;  
+  margin: 0 auto 3rem auto; 
+  padding: 1rem;             
+  max-width: 300px;
+  font-size: 3rem;
+  border-radius: 0.2rem;
+}
+
+.title-todo {
+  background: #252522;
+  text-align: center;
+  display: flex;
+  align-items: center;       
+  justify-content: center;  
+  margin: 0 auto 3rem auto; 
+  padding: 1rem;             
+  max-width: 300px;
+  font-size: 3rem;
+  border-radius: 0.2rem;
+}
+
+.add-list {
+
+    text-align: center;
+  display: flex;
+  align-items: center;      
+  justify-content: center;   
+  margin: 0 auto 3rem auto; 
+  gap: 0.5rem
+}
+
+.list-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.list-button {
+  padding: 0.5rem 1rem;
+  border: 1px solid white;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  border-radius: 0.2rem;
+}
+
+.list-wrapper{
+  position: relative;
+}
+
+.list-button:hover {
+  background: white;
+  color: black;
+}
+
+.list-button.active {
+  background: white;
+  color: black;
+}
+
+.delete-list-button{
+  position: absolute;
+  background-color: #d40606;
+  padding: 3px;
+  top: -8px;
+  left: -8px;
+  width: 15px;
+  height: 15px;
+  align-items: center; 
+  text-align: center;     
+  justify-content: center;  
+  display: flex;
+  border-radius: 50%;  
+  opacity: 0;
+
+}
+
+.list-wrapper:hover .delete-list-button{
+  opacity: 1;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.form-card {
+  background: #2a2a2a;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  max-width: 400px;
+  margin: 0 auto 2rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.form-input {
+  padding: 0.5rem;
+  background: #3a3a3a;
+  color: white;
+  border: none;
+  border-radius: 0.3rem;
+}
+
+.add-button-list {
+  padding: 0.5rem;
+  background: #1e90ff;
+  color: white;
+  border: none;
+  border-radius: 0.3rem;
+  cursor: pointer;
+}
+
+.add-button {
+  background: #1e90ff;
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  cursor: pointer;
+}
+
+.sort-container{
+  display: flex;
+  
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0 5rem 0;
+  gap:1rem
+}
+
+
+
+.task-list {
+  max-width: 450px;
+  background: #3a3a3a;
+  width:100%;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  gap: 1rem;
+  border-radius: 0.2rem;
+}
+
+.task-card {
+  background: #2a2a2a;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+}
+
+.task-card-done {
+  background: #578146;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+}
+
+.task-title {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.task-title.completed {
+  text-decoration: line-through;
+  color: #aaa;
+}
+
+.task-info {
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+
+.priority-high{
+  background-color: #d40606;
+  padding: 0.2rem;
+  border-radius: 0.2rem;
+  font-weight: bold;
+}
+
+.priority-medium{
+  background-color: #d47b06;
+  padding: 0.2rem;
+  border-radius: 0.2rem;
+  font-weight: bold;
+}
+
+.priority-low{
+  background-color: #d0d406;
+  padding: 0.2rem;
+  border-radius: 0.2rem;
+  font-weight: bold;
+}
+
+
+.tag-container {
+  margin-top: 0.3rem;
+  display: flex;
+  gap: 0.3rem;
+  flex-wrap: wrap;
+}
+
+.tag {
+  background: rgb(73, 10, 73);
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.3rem;
+  font-size: 0.75rem;
+  color: white;
+}
+
+.task-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+}
+
+.action-button {
+  background: none;
+  color: white;
+  border: 1px solid white;
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.3rem;
+  cursor: pointer;
+}
+
+.delete-button {
+  background: #e63946;
+  color: white;
+  border: none;
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.3rem;
+  cursor: pointer;
+}
+
+.task-column{
+  display: flex;
+  
+  position: relative;
+  text-align: center;
+  justify-content: center;
+  gap:1rem
+}
+
