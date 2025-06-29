@@ -23,7 +23,7 @@ Une application web simple de gestion de tâches (To-Do List) développée avec 
 1. Ouvre MySQL dans ton terminal :
 ```bash
 mysql -u root -p
-SOURCE backend/init.sql;
+SOURCE backend/init.sql
 
 ### Installation du backend
 
